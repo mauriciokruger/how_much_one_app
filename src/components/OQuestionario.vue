@@ -13,6 +13,11 @@
           Sinta-se à vontade para voltar e revisar suas respostas usando os botões <b>"Voltar"</b> e <b>"Próxima Pergunta"</b>.🤓 <br><br><br>
           Agradecemos por utilizar nosso questionário e esperamos contribuir para o sucesso do seu futuro aplicativo! 🌟
         </div>
+        <div class="mt-4">
+          <a class="text-success text-h4" href="https://wa.me/5549999259394?text=Olá, gostaria de saber quanto custa um aplicativo :)" target="_blank">
+            Fale conosco 😀
+          </a>
+        </div>
       </v-container>
       <v-btn size="x-large" color="primary" class="mt-15" @click="started = true">
         Iniciar 🧐
@@ -39,7 +44,12 @@
             </b>
           </h2>
           <h3 class="text-h6 mb-6">Pontuação: {{ totalPoints }}</h3>
-          <v-btn color="success" @click="restart">Voltar ao início</v-btn>
+          <div class="my-15">
+            <a class="text-success text-h4" href="https://wa.me/5549999259394?text=Olá, gostaria de saber quanto custa um aplicativo :)" target="_blank">
+              Dúvidas? Fale conosco 😀
+            </a>
+          </div>
+          <v-btn size="large" color="success" @click="restart">Voltar ao início</v-btn>
         </div>
       </v-container>
     </div>
