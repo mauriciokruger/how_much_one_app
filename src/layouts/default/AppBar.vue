@@ -1,11 +1,29 @@
 <template>
   <v-app-bar flat>
-    <div class="text-center text-h3 w-100">
-      Quanto custa um aplicativo?
-    </div>
+    <v-row align="center" no-gutters justify="center" justify-md="space-between">
+      <div class="text-h4 pl-md-3">
+        Quanto custa um aplicativo?
+      </div>
+      <img class="logo" src="../../assets/logo_white.png" />
+    </v-row>
   </v-app-bar>
 </template>
 
 <script setup>
   //
 </script>
+<style lang="scss">
+.logo {
+  max-width: 200px;
+  padding: 0 15px 10px 0;
+  @media (max-width: 767px){
+    max-width: 170px;
+    padding: 0 0 10px 0;
+  }
+}
+.v-toolbar__content {
+  @media (max-width: 767px){
+    height: 80px!important;
+  }
+}
+</style>

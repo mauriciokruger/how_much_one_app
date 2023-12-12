@@ -2,15 +2,15 @@
   <div class="text-center">
     <div v-if="!started">
       <v-container class="mt-6 pt-6">
-        <div class="text-h4 mt-6 pt-6">
+        <div class="text-h4 mt-6">
           Você já teve aquela ideia em que um aplicativo resolveria o problema? <br>
           Mas a dúvida que não quer calar: quanto custa em média para fazer um aplicativo? 🤔 <br>
         </div>
-        <div class="text-h5 mt-15">
+        <div class="text-h5 mt-10">
           Este questionário foi projetado para ajudar na definição dos requisitos do seu aplicativo, possibilitando uma avaliação mais precisa e personalizada 🚀. <br><br>
           Responda cada pergunta cuidadosamente, escolhendo a opção que melhor se alinha com os objetivos e características desejados para o seu aplicativo. <br><br>
-          Ao final do questionário, você receberá uma pontuação total, e o valor correspondente será calculado com base nas suas escolhas. <br><br>
-          Sinta-se à vontade para voltar e revisar suas respostas usando os botões <b>"Voltar"</b> e <b>"Próxima Pergunta"</b>.🤓 <br><br><br>
+          <!-- Ao final do questionário, você receberá uma pontuação total, e o valor correspondente será calculado com base nas suas escolhas. <br><br> -->
+          Sinta-se à vontade para voltar e revisar suas respostas usando os botões <b>"Voltar"</b> e <b>"Próxima Pergunta"</b>.🤓 <br><br>
           Agradecemos por utilizar nosso questionário e esperamos contribuir para o sucesso do seu futuro aplicativo! 🌟
         </div>
         <div class="mt-4">
@@ -19,22 +19,28 @@
           </a>
         </div>
       </v-container>
-      <v-btn size="x-large" color="primary" class="mt-15" @click="started = true">
+      <v-btn size="x-large" color="primary" class="mt-10" @click="started = true">
         Iniciar 🧐
       </v-btn>
     </div>
     <div v-else>
       <v-container class="mt-15">
         <div v-if="currentQuestionIndex < questions.length">
-          <h1 class="text-h3">{{ questions[currentQuestionIndex].text }}</h1>
+          <h1 class="text-h4 text-center text-md-left">{{ questions[currentQuestionIndex].text }}</h1>
           <div class="center-radio">
-            <v-radio-group v-model="selectedOption" v-for="(option, index) in questions[currentQuestionIndex].options" :key="index" class="mb-5">
+            <v-radio-group hide-details v-model="selectedOption" v-for="(option, index) in questions[currentQuestionIndex].options" :key="index" class="mb-5">
               <v-radio color="success" :label="option.text" :value="option.points"></v-radio>
               <!-- :name="`question_${currentQuestionIndex}`" :id="index" -->
             </v-radio-group>
           </div>
           <v-btn class="mr-5" color="text" @click="previousQuestion" :disabled="currentQuestionIndex === 0">Voltar</v-btn>
           <v-btn color="success" size="x-large" @click="nextQuestion">Próxima Pergunta</v-btn>
+          <div class="duvidas text-left mt-15">
+            <a class="text-white" href="https://wa.me/5549999259394?text=Olá, gostaria de saber quanto custa um aplicativo :)" target="_blank">
+              Dúvidas sobre o que responder? <br>
+              Chame nossa equipe aqui
+            </a>
+          </div>
         </div>
         <div v-else>
           <h1 class="text-h1">O valor do seu aplicativo será de aproximadamente:</h1>
@@ -53,11 +59,13 @@
         </div>
       </v-container>
     </div>
-    <div class="versao">v1.1</div>
-    <img class="logo" src="../assets/logo_white.png" />
+    <div class="bg" :style="'background-image: url('+ prev +')'"></div>
+    <div class="versao">v 1.2</div>
   </div>
 </template>
-
+<script setup>
+  import prev from '@/assets/bg.png'
+</script>
 <script>
 export default {
   data() {
@@ -199,7 +207,7 @@ export default {
 
 <style lang="scss">
 .center-radio {
-  align-items: center;
+  align-items: start;
   display: flex;
   flex-direction: column;
   margin: 50px 0 0 0;
@@ -216,15 +224,25 @@ export default {
   left: 10px;
   position: absolute;
 }
-.logo {
-  bottom: 10px;
-  max-width: 200px;
+.bg {
+  background-size: cover;
+  height: 100%;
   position: absolute;
-  right: 10px;
+  right: 0;
+  top: 0;
+  width: 480px;
+  z-index: 5;
   @media (max-width: 767px){
-    margin-top: 40px;
-    position: relative;
-    right: inherit;
+    display: none;
+  }
+}
+.v-container {
+  position: relative;
+  z-index: 10;
+}
+.duvidas {
+  a {
+    text-decoration: none;
   }
 }
 @media (max-width: 767px){
@@ -250,7 +268,7 @@ export default {
   .mt-6 {
     margin-top: 15px!important;
   }
-  .mt-15 {
+  .mt-10 {
     margin-top: 20px!important;
   }
   .mb-5 {
@@ -262,4 +280,11 @@ export default {
     width: 50%;
   }
 }
+
+@media (min-width: 1920px) {
+  .v-container {
+    max-width: 1200px;
+  }
+}
+
 </style>
