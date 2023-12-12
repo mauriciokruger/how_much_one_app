@@ -40,7 +40,7 @@
           <h1 class="text-h1">O valor do seu aplicativo será de aproximadamente:</h1>
           <h2 class="text-h1 my-15 text-success">
             <b>
-              {{ formatCurrency(totalPoints * 35000) }}
+              {{ formatCurrency(totalPoints * 28700) }}
             </b>
           </h2>
           <h3 class="text-h6 mb-6">Pontuação: {{ totalPoints }}</h3>
@@ -90,7 +90,7 @@ export default {
         { 
           text: "Qual retorno financeiro você deseja ter?",
           options: [
-            { text: "Aplicativo gratuito com publicidade", points: 5 },
+            { text: "Aplicativo gratuito com publicidade", points: 30 },
             { text: "Aplicativo pago", points: 15 },
             { text: "Compras dentro do aplicativo", points: 40 },
             { text: "Outros / Ainda não sei", points: 10 }
