@@ -82,7 +82,7 @@
                 Como chegamos neste valor?
               </b>
               <br>
-              O valor do aplicativo é baseado em uma estimativa conforme as respostas que selecionou no formulário, cada resposta tem um grau complexibilidade. Esta complexibilidade é denifida com base em diversos projetos que a D3T já criou.
+              O valor do aplicativo é baseado em uma estimativa conforme as respostas que selecionou no formulário, cada resposta tem um grau de complexibilidade. Esta complexibilidade é denifida com base em diversos projetos que a D3T já criou.
             </div>
             <div class="text-h6 font-thin mb-4">
               <b>
