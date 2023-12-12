@@ -204,7 +204,10 @@ export default {
   flex-direction: column;
   margin: 50px 0 0 0;
   .v-label {
-    font-size: 30px
+    font-size: 30px;
+    @media (max-width: 767px){
+      font-size: 20px!important;
+    }
   }
 }
 .versao {
@@ -218,5 +221,45 @@ export default {
   max-width: 200px;
   position: absolute;
   right: 10px;
+  @media (max-width: 767px){
+    margin-top: 40px;
+    position: relative;
+    right: inherit;
+  }
+}
+@media (max-width: 767px){
+  .text-h1 {
+    font-size: 24px!important;
+    line-height: normal;
+  }
+  .text-h3 {
+    font-size: 22px!important;
+    line-height: normal;
+  }
+  .text-h4 {
+    font-size: 20px!important;
+    line-height: normal;
+  }
+  .text-h5 {
+    font-size: 18px!important;
+    line-height: normal;
+  }
+  .pt-6 {
+    padding-top: 15px!important;
+  }
+  .mt-6 {
+    margin-top: 15px!important;
+  }
+  .mt-15 {
+    margin-top: 20px!important;
+  }
+  .mb-5 {
+    margin-bottom: 10px!important;
+  }
+  .mr-5 {
+    margin-bottom: 25px;
+    margin-right: 0px!important;
+    width: 50%;
+  }
 }
 </style>
