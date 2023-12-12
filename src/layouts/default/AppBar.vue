@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <v-app-bar flat>
     <v-row align="center" no-gutters justify="center" justify-md="space-between">
       <div class="text-h4 pl-md-3">
@@ -9,7 +9,7 @@
       </a>
     </v-row>
   </v-app-bar>
-</template>
+</template> -->
 
 <script setup>
   //

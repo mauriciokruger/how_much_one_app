@@ -1,32 +1,32 @@
 <template>
-  <div class="text-center">
+  <div class="text- text-md-left">
     <div v-if="!started">
-      <v-container class="mt-6 pt-6 text-left">
-        <div class="text-h4 mt-6">
-          Você já teve aquela ideia em que um aplicativo resolveria o problema? <br>
-          Mas a dúvida que não quer calar: quanto custa em média para fazer um aplicativo? 🤔 <br>
-        </div>
-        <div class="text-h5 mt-10">
-          Este questionário foi projetado para ajudar na definição dos requisitos do seu aplicativo, possibilitando uma avaliação mais precisa e personalizada 🚀. <br><br>
-          Responda cada pergunta cuidadosamente, escolhendo a opção que melhor se alinha com os objetivos e características desejados para o seu aplicativo. <br><br>
-          <!-- Ao final do questionário, você receberá uma pontuação total, e o valor correspondente será calculado com base nas suas escolhas. <br><br> -->
-          Sinta-se à vontade para voltar e revisar suas respostas usando os botões <b>"Voltar"</b> e <b>"Próxima Pergunta"</b>.🤓 <br><br>
-          Agradecemos por utilizar nosso questionário e esperamos contribuir para o sucesso do seu futuro aplicativo! 🌟
-        </div>
-        <div class="mt-4">
-          <a class="text-success text-h4" href="https://wa.me/5549999259394?text=Olá, gostaria de saber quanto custa um aplicativo :)" target="_blank">
-            Fale conosco 😀
+      <v-container class="mt-15 text-left">
+        <div>
+          <a href="https://d3t.com.br/" target="_blank">
+            <img class="logo" src="../assets/logo_white.png" />
           </a>
         </div>
+        <div class="text-h5 font-thin mt-6">
+          Você já teve <b>aquela ideia</b> em que um <b>aplicativo</b> resolveria o problema? <br><br>
+          Mas a dúvida que não quer calar: <b>quanto custa</b> em média para fazer um aplicativo? 🤔 <br>
+        </div>
+        <v-row class="mt-md-15">
+          <v-col cols="12" md="4">
+            <v-btn size="x-large" color="success" block class="mt-10 mb-3 button-large" @click="started = true">
+              Iniciar <v-icon>mdi-chevron-right</v-icon><v-icon class="button-large-icon">mdi-chevron-right</v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
       </v-container>
-      <div class="text-center">
-        <v-btn size="x-large" color="primary" class="mt-10 mb-3" @click="started = true">
-          Iniciar 🧐
-        </v-btn>
-      </div>
     </div>
     <div v-else>
       <v-container class="mt-15">
+        <div class="text-md-left text-center">
+          <a href="https://d3t.com.br/" target="_blank">
+            <img class="logo" src="../assets/logo_white.png" />
+          </a>
+        </div>
         <div v-if="currentQuestionIndex < questions.length">
           <h1 class="text-h4 text-center text-md-left">{{ questions[currentQuestionIndex].text }}</h1>
           <div class="center-radio">
@@ -35,8 +35,16 @@
               <!-- :name="`question_${currentQuestionIndex}`" :id="index" -->
             </v-radio-group>
           </div>
-          <v-btn class="mr-5" color="text" @click="previousQuestion" :disabled="currentQuestionIndex === 0">Voltar</v-btn>
-          <v-btn color="success" size="x-large" @click="nextQuestion">Próxima Pergunta</v-btn>
+          <v-row align="center" class="mt-6">
+            <v-col cols="12" md="2">
+              <v-btn color="text" @click="previousQuestion" :disabled="currentQuestionIndex === 0">Voltar</v-btn>
+            </v-col>
+            <v-col cols="12" md="4">
+              <v-btn size="x-large" color="success" block class="button-large" @click="nextQuestion">
+                Próxima <v-icon>mdi-chevron-right</v-icon><v-icon class="button-large-icon">mdi-chevron-right</v-icon>
+              </v-btn>
+            </v-col>
+          </v-row>
           <div class="duvidas text-left mt-15">
             <a class="text-white" href="https://wa.me/5549999259394?text=Olá, gostaria de saber quanto custa um aplicativo :)" target="_blank">
               Dúvidas sobre o que responder? <br>
@@ -44,20 +52,60 @@
             </a>
           </div>
         </div>
-        <div v-else>
-          <h1 class="text-h2">O valor do seu aplicativo será de aproximadamente</h1>
-          <h2 class="text-h1 my-15 text-success">
-            <b>
-              {{ formatCurrency(totalPoints * 22200) }}
-            </b>
-          </h2>
-          <h3 class="text-h6 mb-6">Pontuação: {{ totalPoints }}</h3>
-          <div class="my-15">
-            <a class="text-success text-h3" href="https://wa.me/5549999259394?text=Olá, gostaria de saber quanto custa um aplicativo :)" target="_blank">
-              Vamos iniciar os trabalhos? 😀
+        <div v-else class="mw-div">
+          <div class="text-center">
+            <h1 class="text-h4 font-thin">O valor do seu aplicativo será de <b>aproximadamente</b></h1>
+            <h2 class="text-h1 mt-md-15 mt-10 text-success">
+              <b>
+                {{ formatCurrency(totalPoints * 22200) }}
+              </b>
+            </h2>
+            <div class="text-center font-thin">
+              Pontuação: <b>{{ totalPoints }}</b>
+            </div>
+            <v-row align="center" class="mt-10 mt-md-15" justify="center">
+              <v-col cols="12" md="2">
+                <v-btn color="text" @click="restart">Iniciar novamente</v-btn>
+              </v-col>
+              <v-col cols="12" md="4">
+                <a class="text-success text-h3" href="https://wa.me/5549999259394?text=Olá, gostaria de saber quanto custa um aplicativo :)" target="_blank">
+                  <v-btn size="x-large" color="success" block class="button-large" @click="nextQuestion">
+                    Falar com a D3T <v-icon>mdi-chevron-right</v-icon><v-icon class="button-large-icon">mdi-chevron-right</v-icon>
+                  </v-btn>
+                </a>
+              </v-col>
+            </v-row>
+          </div>
+          <div class="mt-10 mt-md-15">
+            <div class="text-h6 font-thin mb-4">
+              <b>
+                Como chegamos neste valor?
+              </b>
+              <br>
+              O valor do aplicativo é baseado em uma estimativa conforme as respostas que selecionou no formulário, cada resposta tem um grau complexibilidade. Esta complexibilidade é denifida com base em diversos projetos que a D3T já criou.
+            </div>
+            <div class="text-h6 font-thin mb-4">
+              <b>
+                Este valor pode mudar?
+              </b>
+              <br>
+              Certamente, este valor é apenas uma estimativa do projeto, mas em convesa com nossa equipe haverá detalhamento do projeto, onde o valor poderá mudar para mais ou para menos.
+            </div>
+            <div class="text-h6 font-thin mb-4">
+              <b>
+                O que está incluído no valor total?
+              </b>
+              <br>
+              Horas da nossa equipe de desenvolvimento. Valores extras devem ser analisados, como: Disponibilidade na loja, servidores de hospedagem, manutenção...
+            </div>
+            <a class="link_none" href="https://wa.me/5549999259394?text=Olá, gostaria de saber quanto custa um aplicativo :)" target="_blank">
+              <div class="text-h6 font-thin mb-4">
+                <b>
+                  Chame nossa equipe, lhe ajudamos a entender seu projeto e tirar a ideia do papel :)
+                </b>
+              </div>
             </a>
           </div>
-          <v-btn size="small" color="success" @click="restart">Voltar ao início</v-btn>
         </div>
       </v-container>
     </div>
@@ -252,6 +300,9 @@ export default {
   }
 }
 .text-h1 {
+  b {
+    font-weight: 900!important;
+  }
   font-weight: 900!important;
 }
 @media (max-width: 767px){
@@ -294,10 +345,54 @@ export default {
   }
 }
 
-@media (min-width: 1920px) {
-  .v-container {
-    max-width: 1200px;
+// @media (min-width: 1900px) {
+//   .v-container {
+//     max-width: 1200px;
+//   }
+// }
+.font-thin {
+  font-weight: 300;
+  b {
+    font-weight: 900;
   }
 }
-
+.button-large {
+  font-size: 26px!important;
+  font-weight: 900!important;
+  line-height: normal!important;
+  text-align: right!important;
+  .v-btn__content {
+    justify-content: flex-end;
+    width: 100%;
+    @media (max-width: 767px){
+      justify-content: center;
+    }
+  }
+  @media (max-width: 767px){
+    font-size: 20px!important;
+  }
+  i {
+    padding-top: 5px;
+  }
+  &-icon {
+    margin-left: -25px;
+  }
+}
+.logo {
+  max-width: 300px;
+  margin-bottom: 20px;
+  @media (max-width: 767px){
+    max-width: 180px;
+    padding: 0 0 5px 0;
+  }
+}
+.mw-div {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+}
+.link_none {
+  color: white!important;
+  text-decoration: none;
+}
 </style>
