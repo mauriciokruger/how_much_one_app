@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
     <div v-if="!started">
-      <v-container class="mt-6 pt-6">
+      <v-container class="mt-6 pt-6 text-left">
         <div class="text-h4 mt-6">
           Você já teve aquela ideia em que um aplicativo resolveria o problema? <br>
           Mas a dúvida que não quer calar: quanto custa em média para fazer um aplicativo? 🤔 <br>
@@ -19,9 +19,11 @@
           </a>
         </div>
       </v-container>
-      <v-btn size="x-large" color="primary" class="mt-10 mb-3" @click="started = true">
-        Iniciar 🧐
-      </v-btn>
+      <div class="text-center">
+        <v-btn size="x-large" color="primary" class="mt-10 mb-3" @click="started = true">
+          Iniciar 🧐
+        </v-btn>
+      </div>
     </div>
     <div v-else>
       <v-container class="mt-15">
