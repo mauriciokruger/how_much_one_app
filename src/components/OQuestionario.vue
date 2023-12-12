@@ -259,6 +259,10 @@ export default {
     font-size: 24px!important;
     line-height: normal;
   }
+  .text-h2 {
+    font-size: 23px!important;
+    line-height: normal;
+  }
   .text-h3 {
     font-size: 22px!important;
     line-height: normal;
