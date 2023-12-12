@@ -219,7 +219,8 @@ export default {
   .v-label {
     font-size: 30px;
     @media (max-width: 767px){
-      font-size: 20px!important;
+      font-size: 18px!important;
+      text-align: left;
     }
   }
 }
