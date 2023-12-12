@@ -43,7 +43,7 @@
           </div>
         </div>
         <div v-else>
-          <h1 class="text-h1">O valor do seu aplicativo será de aproximadamente:</h1>
+          <h1 class="text-h2">O valor do seu aplicativo será de aproximadamente</h1>
           <h2 class="text-h1 my-15 text-success">
             <b>
               {{ formatCurrency(totalPoints * 22200) }}
@@ -51,11 +51,11 @@
           </h2>
           <h3 class="text-h6 mb-6">Pontuação: {{ totalPoints }}</h3>
           <div class="my-15">
-            <a class="text-success text-h4" href="https://wa.me/5549999259394?text=Olá, gostaria de saber quanto custa um aplicativo :)" target="_blank">
-              Dúvidas? Fale conosco 😀
+            <a class="text-success text-h3" href="https://wa.me/5549999259394?text=Olá, gostaria de saber quanto custa um aplicativo :)" target="_blank">
+              Vamos iniciar os trabalhos? 😀
             </a>
           </div>
-          <v-btn size="large" color="success" @click="restart">Voltar ao início</v-btn>
+          <v-btn size="small" color="success" @click="restart">Voltar ao início</v-btn>
         </div>
       </v-container>
     </div>
@@ -75,86 +75,89 @@ export default {
         {
           text: "Que nível de qualidade você está procurando?",
           options: [
-            { text: "Ótima qualidade", points: 60 },
-            { text: "Boa relação de qualidade e preço", points: 40 },
-            { text: "Não estou interessado em muita qualidade", points: 20 }
+            { text: "Ótima qualidade, certamente.", points: 60 },
+            { text: "Boa qualidade mas com preço mais acessível.", points: 40 },
+            { text: "Não preciso de muita qualidade.", points: 20 }
           ]
         },
         { 
-          text: "Qual tipo de aplicativo você precisa?",
+          text: "Qual tipo de aplicativo vocês está buscando?",
           options: [
-            { text: "Aplicativo Android", points: 60 },
-            { text: "Aplicativo iPhone", points: 80 },
-            { text: "Aplicativo Android e iPhone", points: 100 }
+            { text: "Para celulares com Android, Ex: Samsung, Xiaomi…", points: 60 },
+            { text: "Para celulares da Apple.", points: 80 },
+            { text: "Para ambos.", points: 100 }
           ]
         },
         {
-          text: "Qual design você deseja que o seu aplicativo tenha?", 
+          text: "Qual é o estilo de design que você gostaria que seu aplicativo apresentasse?", 
           options: [
-            { text: "Interface simples", points: 40 },
-            { text: "Interface personalizada", points: 120 },
-            { text: "Interface semelhante à Web", points: 80 },
-            { text: "Sem design", points: 20 }
+            { text: "Mais simples.", points: 40 },
+            { text: "Personalizada, quero algo exclusivo.", points: 120 },
+            { text: "Que pareça com um site que já vi.", points: 80 },
+            { text: "Sem preferência para isso.", points: 20 }
           ]
         },
         { 
-          text: "Qual retorno financeiro você deseja ter?",
+          text: "Deseja ganhar dinheiro com o aplicativo?",
           options: [
-            { text: "Aplicativo gratuito com publicidade", points: 30 },
-            { text: "Aplicativo pago", points: 15 },
-            { text: "Compras dentro do aplicativo", points: 40 },
-            { text: "Outros / Ainda não sei", points: 10 },
-            { text: "Não desejo retorno", points: 1 }
+            { text: "Sim, vou por publicidade nele.", points: 30 },
+            { text: "Sim, vou cobrar para as pessoas baixarem ele.", points: 15 },
+            { text: "Sim, vou vender produtos no aplicativo.", points: 40 },
+            { text: "Sim, mas ainda não sei como.", points: 10 },
+            { text: "Não tenho objetivo de lucrar com ele.", points: 1 }
           ]
         },
         {
-          text: "O seu aplicativo precisa de um sistema de login?",
+          text: "As pessoas precisam fazer um cadastro para usar ele?",
           options: [
-            { text: "Sim, com redes sociais e e-mail", points: 40 },
-            { text: "Sim, apenas com e-mail", points: 25 },
-            { text: "Não é necessário login", points: 5 },
-            { text: "Ainda não sei", points: 20 }
+            { text: "Sim, com redes sociais e e-mail.", points: 40 },
+            { text: "Sim, apenas e-mail.", points: 25 },
+            { text: "Não é necessário.", points: 5 },
+            { text: "Não sei ainda se vai ter cadastro.", points: 20 }
           ]
         },
         {
-          text: "Seu aplicativo deve ser integrado a um website?",
+          text: "O aplicativo vai precisar buscar informações de algum site ou sistema automaticamente?",
           options: [
-            { text: "Sim", points: 40 },
-            { text: "Não", points: 20 },
-            { text: "Ainda não sei", points: 30 }
+            { text: "Sim, quero integrar com meu site.", points: 40 },
+            { text: "Sim, quero integrar com meu sistema.", points: 60 },
+            { text: "Não precisa.", points: 10 },
+            { text: "Não sei se será necessário.", points: 20 }
           ]
         },
         {
-          text: "Os usuários devem ter seu perfil próprio?",
+          text: "As pessoas que usarem seu aplicativo, podem ter um perfil personalizado para elas?",
           options: [
-            { text: "Sim", points: 40 },
-            { text: "Não", points: 10 },
-            { text: "Ainda não sei", points: 20 }
+            { text: "Sim, tipo uma rede social.", points: 60 },
+            { text: "Sim, algo mais simples com dados de contato.", points: 40 },
+            { text: "Não será necessário.", points: 10 },
+            { text: "Não sei ainda.", points: 20 }
           ]
         },
         { 
-          text: "Seu aplicativo necessita de um painel administrativo?",
+          text: "As informações que terá no seu aplicativo, serão fixas ou você deseja mudar com o tempo?",
           options: [
-            { text: "Sim", points: 40 },
-            { text: "Não", points: 10 },
-            { text: "Ainda não sei", points: 20 }
+            { text: "Desejo alterar a qualquer momento, publicar notícias, produtos e afins.", points: 40 },
+            { text: "Podem ser todas fixas, não será necessário alterar.", points: 10 },
+            { text: "Não sei ainda.", points: 20 }
           ]
         },
         {
-          text: "Quantas línguas você deseja que seu aplicativo tenha?",
+          text: "Seu aplicativo será apenas em português?",
           options: [
-            { text: "Uma única língua", points: 10 },
-            { text: "Bilíngue", points: 30 },
-            { text: "Multilíngue", points: 50 }
+            { text: "Sim, apenas português.", points: 10 },
+            { text: "Não, terá mais um idioma.", points: 40 },
+            { text: "Não, terá vários idiomas.", points: 50 },
+            { text: "Não sei ainda.", points: 20 }
           ]
         },
         {
-          text: "Em que estágio se encontra o seu projeto?",
+          text: "Qual o nível de informações que você já tem do projeto/aplicativo?",
           options: [
-            { text: "É apenas um projeto", points: 30 },
-            { text: "Esboço já preparado", points: 20 },
-            { text: "Aplicativo em desenvolvimento", points: 40 },
-            { text: "Aplicativo já está pronto", points: 60 }
+            { text: "Tenho apenas a ideia.", points: 30 },
+            { text: "Tenho um rascunho abrangente do aplicativo.", points: 20 },
+            { text: "Já iniciei o desenvolvimento dele.", points: 40 },
+            { text: "Tenho ele pronto, preciso fazer manutenção apenas.", points: 60 }
           ]
         },
         {
@@ -244,6 +247,9 @@ export default {
   a {
     text-decoration: none;
   }
+}
+.text-h1 {
+  font-weight: 900!important;
 }
 @media (max-width: 767px){
   .text-h1 {

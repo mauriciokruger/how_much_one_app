@@ -4,7 +4,9 @@
       <div class="text-h4 pl-md-3">
         Quanto custa um aplicativo?
       </div>
-      <img class="logo" src="../../assets/logo_white.png" />
+      <a href="https://d3t.com.br/" target="_blank">
+        <img class="logo" src="../../assets/logo_white.png" />
+      </a>
     </v-row>
   </v-app-bar>
 </template>
