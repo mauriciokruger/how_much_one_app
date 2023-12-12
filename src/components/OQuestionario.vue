@@ -53,6 +53,8 @@
         </div>
       </v-container>
     </div>
+    <div class="versao">v1.1</div>
+    <img class="logo" src="../assets/logo_white.png" />
   </div>
 </template>
 
@@ -204,5 +206,17 @@ export default {
   .v-label {
     font-size: 30px
   }
+}
+.versao {
+  bottom: 5px;
+  font-size: 10px;
+  left: 10px;
+  position: absolute;
+}
+.logo {
+  bottom: 10px;
+  max-width: 200px;
+  position: absolute;
+  right: 10px;
 }
 </style>
