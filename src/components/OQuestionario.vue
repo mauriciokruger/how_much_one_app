@@ -19,7 +19,7 @@
           </a>
         </div>
       </v-container>
-      <v-btn size="x-large" color="primary" class="mt-10" @click="started = true">
+      <v-btn size="x-large" color="primary" class="mt-10 mb-3" @click="started = true">
         Iniciar 🧐
       </v-btn>
     </div>

@@ -17,10 +17,10 @@
 <style lang="scss">
 .logo {
   max-width: 200px;
-  padding: 0 15px 10px 0;
+  padding: 10px 10px 10px 0;
   @media (max-width: 767px){
     max-width: 170px;
-    padding: 0 0 10px 0;
+    padding: 0 0 5px 0;
   }
 }
 .v-toolbar__content {
