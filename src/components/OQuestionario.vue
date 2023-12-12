@@ -147,6 +147,16 @@ export default {
             { text: "Aplicativo já está pronto", points: 60 }
           ]
         },
+        {
+          text: "Em quanto tempo deseja ter o aplicativo pronto?",
+          options: [
+            { text: "2 meses", points: 45 },
+            { text: "5 meses", points: 20 },
+            { text: "1 ano", points: 10 },
+            { text: "Para ontem", points: 60 },
+            { text: "Sem pressa", points: 15 }
+          ]
+        },
       ],
       currentQuestionIndex: 0,
       selectedOption: null,
