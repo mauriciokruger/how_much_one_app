@@ -170,7 +170,7 @@
       </template>
     </v-snackbar>
     <div class="bg" :style="'background-image: url('+ prev +')'"></div>
-    <div class="versao">v 1.2</div>
+    <div class="versao">v 1.3</div>
   </div>
 </template>
 <script setup>
