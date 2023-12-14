@@ -54,14 +54,59 @@
         </div>
         <div v-else class="mw-div">
           <div class="text-center">
-            <h1 class="text-h4 font-thin">O valor do seu aplicativo será de <b>aproximadamente</b></h1>
-            <h2 class="text-h1 mt-md-15 mt-10 text-success">
-              <b>
-                {{ formatCurrency(totalPoints * 22200) }}
-              </b>
-            </h2>
-            <div class="text-center font-thin">
-              Pontuação: <b>{{ totalPoints }}</b>
+            <div v-if="enviarForm">
+              <h1 class="text-h4 font-thin">Preencha o formulário abaixo para saber qual <br> será o valor do seu aplicativo 😀</h1>
+              <v-row align="center" justify="center" class="mt-6">
+                <v-col cols="12" md="4">
+                  <v-form ref="form" @submit.prevent="submit" v-model="validaForm">
+                    <v-text-field 
+                      autofocus 
+                      label="Nome*"
+                      variant="outlined"
+                      v-model="form.name"
+                      :rules="[rules.required]"
+                      :disabled="salvando"
+                      :loading="salvando"
+                    ></v-text-field>
+                    <v-text-field 
+                      label="E-mail*"
+                      variant="outlined"
+                      v-model="form.email"
+                      :rules="[rules.required, rules.email]"
+                      :disabled="salvando"
+                      :loading="salvando"
+                      type="email"
+                    ></v-text-field>
+                    <div class="d-none">
+                      <input
+                        v-model="form.phone"
+                        v-maska
+                        data-maska="['(##) ####-####', '(##) #####-####']"
+                      >
+                    </div>
+                    <v-text-field 
+                      :rules="[rules.required]"
+                      :disabled="salvando"
+                      :loading="salvando"
+                      v-model="form.phone"
+                      variant="outlined"
+                      label="Telefone*">
+                    </v-text-field>
+                    <v-btn :loading="salvando" type="submit" prepend-icon="mdi-send" size="large" color="success" block class="mt-2">Enviar</v-btn>
+                  </v-form>
+                </v-col>
+              </v-row>
+            </div>
+            <div v-else>
+              <h1 class="text-h4 font-thin">O valor do seu aplicativo será de <b>aproximadamente</b></h1>
+              <h2 class="text-h1 mt-md-15 mt-10 text-success">
+                <b>
+                  {{ formatCurrency(userResponses.reduce((total, response) => total + response.value, 0) * 22200) }}
+                </b>
+              </h2>
+              <div class="text-center font-thin">
+                Pontuação: <b>{{ userResponses.reduce((total, response) => total + response.value, 0) }}</b>
+              </div>
             </div>
             <v-row align="center" class="mt-10 mt-md-15" justify="center">
               <v-col cols="12" md="2">
@@ -109,14 +154,31 @@
         </div>
       </v-container>
     </div>
+    <v-snackbar
+      v-model="sendAlert.show"
+      :timeout="sendAlert.time"
+    >
+      {{sendAlert.text}}
+      <template v-slot:actions>
+        <v-btn
+          :color="sendAlert.color"
+          variant="elevated"
+          @click="sendAlert.show = false"
+        >
+          Fechar
+        </v-btn>
+      </template>
+    </v-snackbar>
     <div class="bg" :style="'background-image: url('+ prev +')'"></div>
     <div class="versao">v 1.2</div>
   </div>
 </template>
 <script setup>
+  import { vMaska } from "maska"
   import prev from '@/assets/bg.png'
 </script>
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
@@ -221,9 +283,28 @@ export default {
           ]
         },
       ],
+      salvando: false,
+      form: {
+        name: '',
+        email: '',
+        phone: ''
+      },
+      sendAlert: {
+        show: false,
+        time: '',
+        text: '',
+        color: ''
+      },
       currentQuestionIndex: 0,
       selectedOption: null,
       totalPoints: 0,
+      validaForm: false,
+      enviarForm: true,
+      userResponses: [],
+      rules: {
+        required: v => !!v || 'Obrigatório.',
+        email: v => !v || /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Digite um e-mail.'
+      }
     }
   },
   methods: {
@@ -232,6 +313,7 @@ export default {
       this.currentQuestionIndex = 0
       this.selectedOption = null
       this.totalPoints = 0
+      this.enviarForm = true
     },
     formatCurrency(value) {
       const formattedValue = new Intl.NumberFormat('pt-BR', {
@@ -242,7 +324,11 @@ export default {
     },
     nextQuestion() {
       if (this.selectedOption !== null) {
-        this.totalPoints += this.selectedOption
+        this.userResponses.push({
+          question: this.questions[this.currentQuestionIndex].text,
+          value: this.selectedOption,
+        })
+        // this.userResponses[this.userResponses.length - 1].totalPoints = this.totalPoints
         this.selectedOption = null
         this.currentQuestionIndex++
       } else {
@@ -251,8 +337,68 @@ export default {
     },
     previousQuestion() {
       if (this.currentQuestionIndex > 0) {
+        this.userResponses.pop()
         this.currentQuestionIndex--
       }
+    },
+    async submit () {
+      if (!this.validaForm) {
+        this.$refs.form.validate()
+        this.sendAlert = {
+          show: true,
+          time: '5000',
+          text: 'Verifique os campos em destaque!',
+          color: 'error'
+        }
+        return false
+      }
+      this.form.questions = this.userResponses
+
+      let dataForm = {
+        "cards": {
+          "sections": [
+            {
+              "header": this.form.name + ' - ' + this.userResponses.reduce((total, response) => total + response.value, 0) + ' pontos',
+              "widgets": [
+                {
+                  "keyValue": {
+                    "topLabel": this.form.email,
+                    "content": this.form.phone
+                  }
+                },
+                {
+                  "textParagraph": {
+                    "text": JSON.stringify(this.form.questions)
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+      this.salvando = true
+      await axios.post('https://chat.googleapis.com/v1/spaces/AAAAFVPa8VQ/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=ukj5b8lcp2B76_HM6U6VqRvkso8X2KE_9i-T9hIpY70', dataForm)
+        .then(response => {
+          console.log(response.data)
+          this.enviarForm = false
+          // this.sendAlert = {
+          //   show: true,
+          //   time: '5000',
+          //   text: 'Enviado!',
+          //   color: 'success'
+          // }
+          this.salvando = false
+        })
+        .catch(err => {
+          console.log(err)
+          this.sendAlert = {
+            show: true,
+            time: '5000',
+            text: 'Ocorreu um erro ao enviar!',
+            color: 'error'
+          }
+          this.salvando = false
+        })
     }
   }
 }
