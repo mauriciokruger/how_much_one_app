@@ -358,7 +358,7 @@ export default {
         "cards": {
           "sections": [
             {
-              "header": this.form.name + ' - ' + this.userResponses.reduce((total, response) => total + response.value, 0) + ' pontos',
+              "header": this.form.name + ' - ' + this.userResponses.reduce((total, response) => total + response.value, 0) + ' pontos' + ' - R$ ' + this.formatCurrency(this.userResponses.reduce((total, response) => total + response.value, 0) * 22200),
               "widgets": [
                 {
                   "keyValue": {
