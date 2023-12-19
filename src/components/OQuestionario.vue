@@ -46,7 +46,7 @@
             </v-col>
           </v-row>
           <div class="duvidas text-left mt-15">
-            <a class="text-white" href="https://wa.me/5549999259394?text=Olá, gostaria de saber quanto custa um aplicativo :)" target="_blank">
+            <a class="text-white" href="https://bit.ly/3Tt54iH" target="_blank">
               Dúvidas sobre o que responder? <br>
               Chame nossa equipe aqui
             </a>
@@ -114,7 +114,7 @@
                 <v-btn color="text" @click="restart">Iniciar novamente</v-btn>
               </v-col>
               <v-col cols="12" md="4">
-                <a class="text-success text-h3" href="https://wa.me/5549999259394?text=Olá, gostaria de saber quanto custa um aplicativo :)" target="_blank">
+                <a class="text-success text-h3" href="https://bit.ly/3Tt54iH" target="_blank">
                   <v-btn size="x-large" color="success" block class="button-large" @click="nextQuestion">
                     Falar com a D3T <v-icon>mdi-chevron-right</v-icon><v-icon class="button-large-icon">mdi-chevron-right</v-icon>
                   </v-btn>
@@ -144,7 +144,7 @@
               <br>
               Horas da nossa equipe de desenvolvimento. Valores extras devem ser analisados, como: Disponibilidade na loja, servidores de hospedagem, manutenção...
             </div>
-            <a class="link_none" href="https://wa.me/5549999259394?text=Olá, gostaria de saber quanto custa um aplicativo :)" target="_blank">
+            <a class="link_none" href="https://bit.ly/3Tt54iH" target="_blank">
               <div class="text-h6 font-thin mb-4">
                 <b>
                   Chame nossa equipe, lhe ajudamos a entender seu projeto e tirar a ideia do papel :)
