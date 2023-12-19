@@ -92,7 +92,8 @@
                       variant="outlined"
                       label="Telefone*">
                     </v-text-field>
-                    <v-btn :loading="salvando" type="submit" prepend-icon="mdi-send" size="large" color="success" block class="mt-2">Enviar</v-btn>
+                    <!--  prepend-icon="mdi-send" -->
+                    <v-btn :loading="salvando" type="submit" size="large" color="success" block class="mt-2">Ver valor</v-btn>
                   </v-form>
                 </v-col>
               </v-row>
